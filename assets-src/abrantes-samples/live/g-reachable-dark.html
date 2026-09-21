@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>G - Reachable dark band · Alexander Perez</title>
+  <link rel="stylesheet" href="./abrantes-tokens.css" />
+  <style>
+    .band {
+      min-height: calc(100svh - var(--nav-height));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-block: 64px var(--space-section);
+    }
+    .big-mail {
+      margin: 32px 0 0;
+      font-size: var(--text-5xl);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      color: var(--muted);
+      word-break: break-word;
+      transition: color 0.25s var(--ease);
+    }
+    .big-mail:hover { color: var(--accent-violet); }
+    .foot {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: var(--text-sm);
+      color: var(--muted);
+    }
+    .h1 { max-width: 14ch; }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="rail nav">
+    <a class="brand" href="#">Alexander Perez</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="pill" href="mailto:hello@iknowai.co">Book a call
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M3 8h8.2L8.1 4.9l.9-.9L14 8l-5 4-.9-.9L11.2 8H3z"/></svg>
+    </a>
+  </header>
+
+  <main id="main" class="rail band" id="contact">
+    <div>
+      <p class="kicker"><span class="v">Reachable first</span> · <span class="y">Denver</span></p>
+      <h1 class="h1" id="about">Hello from Denver.</h1>
+      <a class="big-mail" href="mailto:hello@iknowai.co">hello@iknowai.co</a>
+      <p class="lede">
+        Engineer who teaches AI without jargon. If you want the long arc (eng to security to adoption coaching), ask. I read every DM.
+      </p>
+    </div>
+    <div class="foot">
+      <span>EN / ES · Person before product</span>
+      <span>Family-scale practice</span>
+    </div>
+  </main>
+</body>
+</html>
