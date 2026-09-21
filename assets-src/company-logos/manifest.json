@@ -1,77 +1,135 @@
 {
-  "source": "profile-vault Resumes and LinkedIn.md; LinkedIn live blocked by auth/security",
+  "source": "LinkedIn live Experience details (signed-in) https://www.linkedin.com/in/alexanderlperez/details/experience/",
   "profile": "https://www.linkedin.com/in/alexanderlperez/",
   "public_url": "https://www.linkedin.com/in/iknowai/",
+  "captured": "2026-09-21",
+  "vault_shortlist": ["iknowai", "aitv", "haxal", "3xcalibur", "lumena", "canvs"],
+  "vault_compare": {
+    "matched": ["iknowai", "aitv", "3xcalibur", "lumena", "canvs"],
+    "vault_only_name": {
+      "haxal": "Vault lists Haxal LTD; live LinkedIn lists this period as Self-employed (Blockchain Security Researcher, Dec 2022-May 2025). No company page or logo on Experience."
+    },
+    "linkedin_extras_vs_vault_shortlist": [
+      "qalm",
+      "10pwarmups",
+      "self-employed-2017",
+      "blkdg",
+      "neoreach"
+    ]
+  },
   "companies": [
     {
+      "slug": "qalm",
+      "name": "Qalm",
+      "role": "Founder",
+      "period": "Jul 2026-Present",
+      "employment": "Self-employed",
+      "company_linkedin": null,
+      "logo": null,
+      "notes": "No company link on Experience; LinkedIn company search hits are unrelated (tax tool / other orgs)."
+    },
+    {
+      "slug": "10pwarmups",
+      "name": "10pwarmups",
+      "role": "Founder",
+      "period": "Jun 2026-Present",
+      "employment": "Self-employed",
+      "company_linkedin": null,
+      "logo": null,
+      "notes": "Live product URL in Experience: https://openthesystem.app"
+    },
+    {
       "slug": "iknowai",
-      "name": "iknowai / The AI Confident Professional",
-      "role": "Founder, AI Coach",
-      "period": "Jun 2026-present",
-      "domain": "iknowai.co",
-      "logo": "iknowai.svg",
-      "alts": [
-        "iknowai-apple-touch.png",
-        "iknowai.png"
-      ]
+      "name": "iknowai",
+      "role": "Founder - Adoption Program & Readiness Platform",
+      "period": "Mar 2026-Present",
+      "company_linkedin": "https://www.linkedin.com/company/139484364/",
+      "logo": "iknowai-linkedin.png",
+      "alts": ["iknowai.svg", "iknowai-apple-touch.png", "iknowai.png", "iknowai-og.jpg"]
     },
     {
       "slug": "aitv",
       "name": "AITV",
       "role": "Senior Full Stack Engineer",
       "period": "Feb 2025-Mar 2026",
-      "domain": "aitv.gg",
+      "employment": "Full-time",
+      "location": "Remote",
+      "company_linkedin": "https://www.linkedin.com/company/103930502/",
       "logo": "aitv-linkedin.png",
-      "alts": [
-        "aitv-icon.png",
-        "aitv.png"
-      ]
+      "alts": ["aitv-icon.png", "aitv-128.png", "aitv.png"]
     },
     {
       "slug": "haxal",
-      "name": "Haxal LTD (self-employed)",
+      "name": "Self-employed",
       "role": "Blockchain Security Researcher",
       "period": "Dec 2022-May 2025",
-      "domain": null,
+      "employment": "Self-employed",
+      "location": "On-site",
+      "company_linkedin": null,
       "logo": null,
-      "notes": "No public logo found; local haxal-alex.png is a personal image, not a mark"
+      "notes": "Vault name Haxal LTD; live Experience has no company page or logo."
     },
     {
       "slug": "3xcalibur",
       "name": "3xcalibur",
-      "role": "Front End Engineering Manager",
+      "role": "Full Stack Engineer",
       "period": "Feb 2022-Dec 2022",
-      "domain": "3xcalibur.com (defunct DNS)",
+      "employment": "Full-time",
+      "location": "Remote",
+      "company_linkedin": null,
       "logo": "3xcalibur.png",
-      "alts": [
-        "3xcalibur-app-logo.png",
-        "3xcalibur-from-screenshot.png"
-      ],
-      "notes": "CMC 64px token mark; site DNS dead; cropped from local 2023 screenshots as fallback"
+      "alts": ["3xcalibur-app-logo.png", "3xcalibur-from-screenshot.png"],
+      "notes": "No LinkedIn company page (search: no results). Kept prior local marks."
     },
     {
       "slug": "lumena",
       "name": "Lumena Inc",
-      "role": "Senior Frontend Engineer",
+      "role": "Senior Frontend Developer",
       "period": "Aug 2020-Sep 2021",
-      "domain": "lumenalabs.com",
+      "employment": "Contract",
+      "location": "Denver, Colorado, United States - Hybrid",
+      "company_linkedin": "https://www.linkedin.com/company/23720749/",
       "logo": "lumena-linkedin.png",
-      "notes": "Google favicon 128px; site may be soft",
-      "alts": [
-        "lumena.png"
-      ]
+      "alts": ["lumena.png"]
     },
     {
       "slug": "canvs",
       "name": "Canvs AI",
-      "role": "Lead Frontend Developer",
+      "role": "Front End Lead",
       "period": "Nov 2018-Apr 2020",
-      "domain": "canvs.ai",
+      "employment": "Full-time",
+      "location": "New York, United States - On-site",
+      "company_linkedin": "https://www.linkedin.com/company/1865146/",
       "logo": "canvs-linkedin.png",
-      "alts": [
-        "canvs-mark.svg",
-        "canvs.png"
-      ]
+      "alts": ["canvs-mark.svg", "canvs-mark-2.svg", "canvs.png"]
+    },
+    {
+      "slug": "self-employed-2017",
+      "name": "Self-employed",
+      "role": "Full Stack Engineer",
+      "period": "Apr 2017-Jun 2018",
+      "employment": "Self-employed",
+      "company_linkedin": null,
+      "logo": null
+    },
+    {
+      "slug": "blkdg",
+      "name": "BLKDG",
+      "role": "Web Developer",
+      "period": "Jan 2016-Apr 2017",
+      "location": "Denver, CO",
+      "company_linkedin": "https://www.linkedin.com/company/1438973/",
+      "logo": "blkdg-linkedin.png"
+    },
+    {
+      "slug": "neoreach",
+      "name": "NeoReach",
+      "role": "Full Stack Developer",
+      "period": "Mar 2014-Mar 2015",
+      "employment": "Full-time",
+      "location": "Orlando, Florida, United States - On-site",
+      "company_linkedin": "https://www.linkedin.com/company/3757484/",
+      "logo": "neoreach-linkedin.png"
     }
   ]
 }
