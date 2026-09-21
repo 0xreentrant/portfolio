@@ -1,0 +1,77 @@
+{
+  "source": "profile-vault Resumes and LinkedIn.md; LinkedIn live blocked by auth/security",
+  "profile": "https://www.linkedin.com/in/alexanderlperez/",
+  "public_url": "https://www.linkedin.com/in/iknowai/",
+  "companies": [
+    {
+      "slug": "iknowai",
+      "name": "iknowai / The AI Confident Professional",
+      "role": "Founder, AI Coach",
+      "period": "Jun 2026-present",
+      "domain": "iknowai.co",
+      "logo": "iknowai.svg",
+      "alts": [
+        "iknowai-apple-touch.png",
+        "iknowai.png"
+      ]
+    },
+    {
+      "slug": "aitv",
+      "name": "AITV",
+      "role": "Senior Full Stack Engineer",
+      "period": "Feb 2025-Mar 2026",
+      "domain": "aitv.gg",
+      "logo": "aitv-linkedin.png",
+      "alts": [
+        "aitv-icon.png",
+        "aitv.png"
+      ]
+    },
+    {
+      "slug": "haxal",
+      "name": "Haxal LTD (self-employed)",
+      "role": "Blockchain Security Researcher",
+      "period": "Dec 2022-May 2025",
+      "domain": null,
+      "logo": null,
+      "notes": "No public logo found; local haxal-alex.png is a personal image, not a mark"
+    },
+    {
+      "slug": "3xcalibur",
+      "name": "3xcalibur",
+      "role": "Front End Engineering Manager",
+      "period": "Feb 2022-Dec 2022",
+      "domain": "3xcalibur.com (defunct DNS)",
+      "logo": "3xcalibur.png",
+      "alts": [
+        "3xcalibur-app-logo.png",
+        "3xcalibur-from-screenshot.png"
+      ],
+      "notes": "CMC 64px token mark; site DNS dead; cropped from local 2023 screenshots as fallback"
+    },
+    {
+      "slug": "lumena",
+      "name": "Lumena Inc",
+      "role": "Senior Frontend Engineer",
+      "period": "Aug 2020-Sep 2021",
+      "domain": "lumenalabs.com",
+      "logo": "lumena-linkedin.png",
+      "notes": "Google favicon 128px; site may be soft",
+      "alts": [
+        "lumena.png"
+      ]
+    },
+    {
+      "slug": "canvs",
+      "name": "Canvs AI",
+      "role": "Lead Frontend Developer",
+      "period": "Nov 2018-Apr 2020",
+      "domain": "canvs.ai",
+      "logo": "canvs-linkedin.png",
+      "alts": [
+        "canvs-mark.svg",
+        "canvs.png"
+      ]
+    }
+  ]
+}
