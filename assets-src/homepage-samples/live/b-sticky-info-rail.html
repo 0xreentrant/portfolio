@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>B - Sticky info rail · Alexander Perez</title>
+  <link rel="stylesheet" href="./spatino-tokens.css" />
+  <style>
+    .hero {
+      padding: 48px var(--gutter) 32px;
+    }
+    @media (min-width: 768px) {
+      .hero { padding-block: 80px 48px; }
+    }
+    .hero-grid {
+      display: grid;
+      gap: 32px 4px;
+    }
+    @media (min-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+      .sticky-label {
+        position: sticky;
+        top: 24px;
+      }
+    }
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .portrait-wrap {
+      margin-top: 48px;
+    }
+    .portrait-wide {
+      aspect-ratio: 2 / 1;
+      max-height: 420px;
+    }
+    @media (max-width: 767px) {
+      .portrait-wide { aspect-ratio: 3 / 4; max-height: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header">
+    <div class="rail header-inner">
+      <div>
+        <p class="brand">Alexander Perez</p>
+        <p class="meta">Denver · family-scale practice</p>
+      </div>
+      <nav class="nav" aria-label="Main">
+        <a href="#" aria-current="page">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="about">
+      <div class="rail hero-grid">
+        <p class="section-label sticky-label">About</p>
+        <div class="stack">
+          <h1 class="h1" style="max-width: none; letter-spacing: -2px;">
+            I built these tools. <span class="mute">Now I help the teams who were told to use them -</span> and never shown how.
+          </h1>
+          <p class="prose" style="max-width: 42rem;">
+            Software engineer in Denver. Career spent inside the companies where this technology gets made - shipping it rather than presenting slides about it. Bilingual EN/ES. Reads every DM.
+          </p>
+          <p class="prose" style="max-width: 42rem;">
+            The gap isn't intelligence. It's the space between rollout and routine, and someone has to own closing it. That's the job now - with your team, never instead of it.
+          </p>
+        </div>
+      </div>
+      <div class="rail portrait-wrap">
+        <div class="media portrait-wide">
+          <img src="../photos/alex-perez.png" alt="Alexander Perez" width="1200" height="600" />
+        </div>
+      </div>
+    </section>
+
+    <footer class="contact" id="contact">
+      <div class="rail">
+        <h2 class="contact-h2">Say hello</h2>
+        <a class="contact-link" href="mailto:hello@iknowai.co">hello@iknowai.co</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

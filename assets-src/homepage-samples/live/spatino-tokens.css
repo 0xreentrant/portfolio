@@ -1,0 +1,217 @@
+/* Spatino-informed tokens for live HTML first-viewports */
+
+@font-face {
+  font-family: Geist;
+  src: url("../fonts/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Fallback";
+  src: local("Arial");
+  ascent-override: 95.94%;
+  descent-override: 28.16%;
+  line-gap-override: 0%;
+  size-adjust: 104.76%;
+}
+
+:root {
+  --background: #fff;
+  --foreground: #111111;
+  --muted-soft: #b2b2b2;
+  --muted: oklch(0.707 0.022 261.325);
+  --muted-deep: oklch(0.551 0.027 264.364);
+  --rule: oklch(0.967 0.003 264.542);
+  --rule-strong: oklch(0.928 0.006 264.531);
+  --surface: oklch(0.967 0.003 264.542);
+  --font-size-xs: clamp(14px, 1.1vw, 14px);
+  --font-size-sm: clamp(17px, 1.4vw, 17px);
+  --font-size-md: clamp(17px, 1.6vw, 20px);
+  --font-size-lg: clamp(20px, 1.8vw, 24px);
+  --font-size-xl: clamp(24px, 2.2vw, 28px);
+  --font-size-2xl: clamp(36px, 5.5vw, 64px);
+  --rail: 1440px;
+  --gutter: 16px;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.skip {
+  position: absolute;
+  left: -9999px;
+}
+.skip:focus {
+  left: 16px;
+  top: 16px;
+  z-index: 50;
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.rail {
+  max-width: var(--rail);
+  margin-inline: auto;
+}
+
+.px { padding-inline: var(--gutter); }
+
+.header {
+  padding: 16px var(--gutter);
+  border-bottom: 1px solid var(--rule);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  margin: 0;
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.meta {
+  margin: 4px 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--muted);
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.nav a {
+  font-size: var(--font-size-sm);
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: var(--foreground);
+}
+
+@media (min-width: 768px) {
+  .nav a { font-size: var(--font-size-md); }
+}
+
+.h1 {
+  margin: 0;
+  max-width: 540px;
+  font-size: var(--font-size-2xl);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -2.5px;
+  text-wrap: balance;
+}
+
+.h1 .mute { color: var(--muted-soft); }
+
+.lede {
+  margin: 0;
+  max-width: 540px;
+  font-size: var(--font-size-md);
+  line-height: 1.625;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.section-label {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  line-height: 36.4px;
+  letter-spacing: -0.64px;
+  color: #000;
+}
+
+.prose {
+  margin: 0;
+  font-size: var(--font-size-md);
+  line-height: 1.625;
+  color: var(--muted-deep);
+  text-wrap: pretty;
+}
+
+.media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: oklch(0.985 0.002 247.839);
+}
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portrait {
+  aspect-ratio: 3 / 4;
+}
+@media (min-width: 768px) {
+  .portrait { aspect-ratio: 1 / 1; }
+}
+
+.section {
+  padding: 64px var(--gutter);
+  border-top: 1px solid var(--rule);
+}
+@media (min-width: 768px) {
+  .section { padding-block: 96px; }
+}
+
+.contact {
+  background: var(--surface);
+  padding: 40px var(--gutter) 48px;
+}
+@media (min-width: 768px) {
+  .contact { padding: 64px var(--gutter) 48px; }
+}
+
+.contact-h2 {
+  margin: 0 0 24px;
+  max-width: 18ch;
+  font-size: var(--font-size-2xl);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+@media (min-width: 768px) {
+  .contact-h2 { letter-spacing: -2.56px; }
+}
+
+.contact-link {
+  font-size: var(--font-size-2xl);
+  font-weight: 300;
+  color: var(--muted-soft);
+  transition: color 0.15s ease;
+}
+.contact-link:hover { color: var(--foreground); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alexander Perez - homepage samples</title>
+  <style>
+    :root {
+      --ink: #111111;
+      --paper: #fff;
+      --rule: oklch(0.928 0.006 264.531);
+      --muted: oklch(0.551 0.027 264.364);
+      --select: #111111;
+      --display: "Geist", ui-sans-serif, system-ui, sans-serif;
+      --text: "Geist", ui-sans-serif, system-ui, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--text);
+      line-height: 1.45;
+    }
+
+    header {
+      padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 4vw, 3rem) 1rem;
+      max-width: 88rem;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 0.35rem;
+      font-family: var(--display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+
+    .lede {
+      margin: 0.75rem 0 0;
+      max-width: 42rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hint {
+      margin: 0.75rem 0 0;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .toc {
+      margin: 1.25rem 0 0;
+    }
+
+    .toc__label {
+      margin: 0 0 0.35rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .toc__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .toc a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .toc a:hover { text-decoration: underline; }
+
+    .brief {
+      margin: 1.25rem 0 0;
+      max-width: 42rem;
+      border: 1px solid var(--rule);
+      padding: 0.75rem 1rem;
+    }
+    .brief summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .brief dl {
+      margin: 0.75rem 0 0;
+      display: grid;
+      gap: 0.65rem;
+    }
+    .brief dt {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .brief dd { margin: 0.15rem 0 0; }
+
+    .section-collapse.section--favorites {
+      max-width: 88rem;
+      margin: 2.5rem auto 0;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+    }
+
+    .section-collapse > summary {
+      margin: 0 0 0.75rem;
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+    }
+    .section-collapse > summary::-webkit-details-marker { display: none; }
+    .section-collapse > summary::before { content: "▸ "; }
+    .section-collapse[open] > summary::before { content: "▾ "; }
+
+    .section-collapse-list {
+      max-width: 88rem;
+      margin: 2.5rem auto 0;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+      border-top: 2px solid var(--ink);
+    }
+
+    .section-collapse-list .section-collapse {
+      margin: 0;
+      border: 0;
+    }
+
+    .section-collapse-list .section-collapse > summary {
+      margin: 0;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-collapse-list .section-collapse:last-child > summary {
+      border-bottom: 0;
+    }
+
+    .section-collapse-list .section-collapse[open] > summary {
+      border-bottom: 0;
+    }
+
+    .section-collapse-list .section-collapse[open]:not(:last-child) {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .concept {
+      position: relative;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      cursor: pointer;
+    }
+    .concept.is-selected {
+      border-color: var(--select);
+      border-width: 2px;
+    }
+    .concept.is-selected::after {
+      content: "✓";
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      z-index: 3;
+      width: 1.5rem;
+      height: 1.5rem;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 0.75rem;
+      border-radius: 999px;
+    }
+
+    .concept-sample--live {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+      background: oklch(0.97 0.002 264);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .frame-scale {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .frame-scale iframe {
+      width: 1280px;
+      height: 800px;
+      border: 0;
+      pointer-events: none;
+      background: #fff;
+    }
+
+    .open-live {
+      position: absolute;
+      left: 0.6rem;
+      bottom: 0.6rem;
+      z-index: 2;
+      padding: 0.3rem 0.55rem;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      text-decoration: none;
+    }
+
+    .concept-meta {
+      padding: 0.85rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .kind {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+    .concept-meta strong { font-size: 1rem; }
+    .thesis {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .copy-bar {
+      position: sticky;
+      bottom: 0;
+      z-index: 20;
+      display: none;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+    .copy-bar.is-on { display: flex; }
+    .copy-bar button {
+      border: 1px solid oklch(0.85 0.02 95);
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
+    }
+
+    footer.page-foot {
+      max-width: 88rem;
+      margin: 3rem auto 2rem;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Alexander Perez - homepage samples</h1>
+    <p class="lede">
+      Spatino-informed type and layout tokens. Person before product - four live first-viewport options, no shipped-work grid yet.
+    </p>
+    <p class="hint">Click cards to multi-select · selection copies to clipboard · Ctrl/Cmd+C or Copy titles</p>
+
+    <nav class="toc" aria-label="On this page">
+      <p class="toc__label">On this page</p>
+      <ul class="toc__list">
+        <li><a href="#favorites">Favorites</a></li>
+        <li><a href="#live-options">Live HTML options</a></li>
+        <li><a href="#design-brief">Design brief</a></li>
+      </ul>
+    </nav>
+
+    <details class="brief" id="design-brief">
+      <summary>Design brief</summary>
+      <dl>
+        <div>
+          <dt>Product</dt>
+          <dd>Personal portfolio for Alexander Perez. Biography and contact first; products later.</dd>
+        </div>
+        <div>
+          <dt>Audience</dt>
+          <dd>Prospective collaborators and clients who want the human context before any pitch.</dd>
+        </div>
+        <div>
+          <dt>Personality</dt>
+          <dd>Empathetic, credible, practical. Engineer who teaches.</dd>
+        </div>
+        <div>
+          <dt>Visual lane</dt>
+          <dd>arturospatino.com - Geist, white/#111, cool gray muted type, 1440 rail, 8px radius, fluid display scale.</dd>
+        </div>
+        <div>
+          <dt>Anti-references</dt>
+          <dd>SaaS metric heroes, purple gradients, product-mockup-first portfolios, cream editorial monoculture.</dd>
+        </div>
+      </dl>
+    </details>
+  </header>
+
+  <details class="section-collapse section--favorites" id="favorites" open>
+    <summary>Favorites</summary>
+    <main id="favorites-grid" class="grid"></main>
+  </details>
+
+  <div class="section-collapse-list">
+    <details class="section-collapse" id="live-options">
+      <summary>Live HTML options</summary>
+      <main id="live-grid" class="grid"></main>
+    </details>
+  </div>
+
+  <footer class="page-foot">
+    Serve from <code>assets-src/</code>: <code>python3 -m http.server 8000</code> · open <code>/homepage-samples.html</code>
+  </footer>
+
+  <div class="copy-bar" id="copy-bar" aria-live="polite">
+    <span id="copy-count">0 selected</span>
+    <button type="button" id="copy-btn">Copy titles</button>
+  </div>
+
+  <script>
+    const favoriteSamples = [
+      {
+        id: "a-spatino-two-col",
+        title: "A - Spatino two-col",
+        kind: "live",
+        src: "homepage-samples/live/a-spatino-two-col.html",
+        thesis: "Closest mirror: two-column hero, muted phrase contrast, square portrait, Info + Contact. No work grid.",
+      },
+    ]
+
+    const liveSamples = [
+      {
+        id: "b-sticky-info-rail",
+        title: "B - Sticky info rail",
+        kind: "live",
+        src: "homepage-samples/live/b-sticky-info-rail.html",
+        thesis: "About-as-hero: sticky section label, long bio stack, wide portrait strip under.",
+      },
+      {
+        id: "c-portrait-first",
+        title: "C - Portrait-first stack",
+        kind: "live",
+        src: "homepage-samples/live/c-portrait-first.html",
+        thesis: "Image lands first; name and facts below. Quiet, photo-led entry.",
+      },
+      {
+        id: "d-contact-forward",
+        title: "D - Contact-forward",
+        kind: "live",
+        src: "homepage-samples/live/d-contact-forward.html",
+        thesis: "Gray band, giant mail link, small portrait. Reachability is the first viewport.",
+      },
+    ]
+
+    function cardHtml(sample) {
+      return `
+        <article class="concept" data-id="${sample.id}" data-title="${sample.title}" tabindex="0" role="button" aria-pressed="false">
+          <div class="concept-sample concept-sample--live">
+            <div class="frame-scale" data-scale-host>
+              <iframe title="${sample.title}" src="${sample.src}" loading="lazy" tabindex="-1"></iframe>
+            </div>
+            <a class="open-live" href="${sample.src}">Open full size</a>
+          </div>
+          <div class="concept-meta">
+            <span class="kind">Live HTML</span>
+            <strong>${sample.title}</strong>
+            <p class="thesis">${sample.thesis}</p>
+          </div>
+        </article>
+      `
+    }
+
+    document.getElementById("favorites-grid").innerHTML = favoriteSamples.map(cardHtml).join("")
+    document.getElementById("live-grid").innerHTML = liveSamples.map(cardHtml).join("")
+
+    const selected = new Map()
+    const copyBar = document.getElementById("copy-bar")
+    const copyCount = document.getElementById("copy-count")
+
+    function writeClipboard(text) {
+      if (!text) return Promise.resolve()
+      if (navigator.clipboard?.writeText) return navigator.clipboard.writeText(text)
+      const area = document.createElement("textarea")
+      area.value = text
+      area.setAttribute("readonly", "")
+      area.style.position = "fixed"
+      area.style.left = "-9999px"
+      document.body.appendChild(area)
+      area.select()
+      document.execCommand("copy")
+      document.body.removeChild(area)
+      return Promise.resolve()
+    }
+
+    function syncBar(copied) {
+      const n = selected.size
+      copyBar.classList.toggle("is-on", n > 0)
+      copyCount.textContent = copied
+        ? `Copied ${n} title${n === 1 ? "" : "s"}`
+        : n === 1 ? "1 selected" : `${n} selected`
+    }
+
+    function copySelection() {
+      const text = [...selected.values()].join("\n")
+      if (!text) return
+      writeClipboard(text).then(() => syncBar(true))
+    }
+
+    function toggleCard(card) {
+      const id = card.dataset.id
+      if (!id) return
+      if (selected.has(id)) selected.delete(id)
+      else selected.set(id, card.dataset.title || id)
+      card.classList.toggle("is-selected", selected.has(id))
+      card.setAttribute("aria-pressed", selected.has(id) ? "true" : "false")
+      if (selected.size) copySelection()
+      else syncBar(false)
+    }
+
+    document.addEventListener("click", (e) => {
+      if (e.target.closest("summary, button")) return
+      if (e.target.closest("a.open-live")) return
+      const card = e.target.closest(".concept")
+      if (!card) return
+      toggleCard(card)
+    })
+
+    document.addEventListener("keydown", (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "c" && selected.size) {
+        e.preventDefault()
+        copySelection()
+      }
+      if (e.key === "Enter" || e.key === " ") {
+        const card = e.target.closest?.(".concept")
+        if (card && document.activeElement === card) {
+          e.preventDefault()
+          toggleCard(card)
+        }
+      }
+    })
+
+    document.getElementById("copy-btn").addEventListener("click", copySelection)
+
+    function scaleFrames() {
+      document.querySelectorAll("[data-scale-host]").forEach((host) => {
+        const iframe = host.querySelector("iframe")
+        if (!iframe) return
+        const s = Math.min(host.clientWidth / 1280, host.clientHeight / 800)
+        iframe.style.transform = `scale(${s})`
+        iframe.style.transformOrigin = "top left"
+      })
+    }
+
+    window.addEventListener("load", scaleFrames)
+    window.addEventListener("resize", scaleFrames)
+    document.querySelectorAll("details").forEach((d) => {
+      d.addEventListener("toggle", () => requestAnimationFrame(scaleFrames))
+    })
+    setTimeout(scaleFrames, 400)
+  </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>C - Portrait-first stack · Alexander Perez</title>
+  <link rel="stylesheet" href="./spatino-tokens.css" />
+  <style>
+    .stage {
+      padding: 16px var(--gutter) 0;
+    }
+    .stage .media {
+      aspect-ratio: 1 / 1;
+      max-width: 720px;
+      margin-inline: auto;
+    }
+    @media (min-width: 768px) {
+      .stage .media {
+        max-width: none;
+        aspect-ratio: 2 / 1;
+      }
+    }
+    .below {
+      padding: 40px var(--gutter) 16px;
+    }
+    @media (min-width: 768px) {
+      .below { padding-block: 64px 24px; }
+    }
+    .below-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      max-width: 720px;
+    }
+    .facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: var(--font-size-sm);
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header">
+    <div class="rail header-inner">
+      <div>
+        <p class="brand">Alexander Perez</p>
+        <p class="meta">Portfolio · v0 scaffold</p>
+      </div>
+      <nav class="nav" aria-label="Main">
+        <a href="#" aria-current="page">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="stage">
+      <div class="rail">
+        <div class="media">
+          <img src="../photos/alex-perez-circle.png" alt="Alexander Perez" width="1440" height="720" />
+        </div>
+      </div>
+    </section>
+
+    <section class="below" id="about">
+      <div class="rail below-inner">
+        <h1 class="h1">
+          Alexander Perez
+        </h1>
+        <p class="lede" style="max-width: 36rem;">
+          Engineer-turned-coach for the people every AI mandate eventually lands on. Calm over chaos. Craft over hype. Dinner with family is non-negotiable.
+        </p>
+        <ul class="facts">
+          <li>Denver, CO</li>
+          <li>EN / ES</li>
+          <li>12+ yrs product engineering</li>
+          <li>Security research · AI adoption</li>
+        </ul>
+        <p class="prose" style="max-width: 40rem;">
+          Work and case studies will land here later. This pass is biography and contact only - person before product.
+        </p>
+      </div>
+    </section>
+
+    <footer class="contact" id="contact">
+      <div class="rail">
+        <h2 class="contact-h2">Connect</h2>
+        <a class="contact-link" href="mailto:hello@iknowai.co">hello@iknowai.co</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

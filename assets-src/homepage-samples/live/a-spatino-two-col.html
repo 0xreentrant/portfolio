@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A - Spatino two-col · Alexander Perez</title>
+  <link rel="stylesheet" href="./spatino-tokens.css" />
+  <style>
+    .hero {
+      padding: 16px var(--gutter) 8px;
+    }
+    .hero-grid {
+      display: grid;
+      gap: 24px 4px;
+    }
+    @media (min-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+      }
+    }
+    .copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      padding-block: 16px;
+    }
+    @media (min-width: 768px) {
+      .copy {
+        gap: 40px;
+        padding-block: 64px;
+      }
+    }
+    .bio-grid {
+      display: grid;
+      gap: 16px 4px;
+    }
+    @media (min-width: 768px) {
+      .bio-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .bio-grid .section-label {
+        position: sticky;
+        top: 16px;
+        align-self: start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header">
+    <div class="rail header-inner">
+      <div>
+        <p class="brand">Alexander Perez</p>
+        <p class="meta">Denver, CO · EN / ES</p>
+      </div>
+      <nav class="nav" aria-label="Main">
+        <a href="#" aria-current="page">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="rail hero-grid">
+        <div class="copy">
+          <h1 class="h1">
+            Engineer <span class="mute">who teaches AI without</span> jargon <span class="mute">or</span> shame.
+          </h1>
+          <p class="lede">
+            Twelve years shipping products and leading frontend teams. Then security research. Now helping non-technical leaders close the gap between AI rollout and routine.
+          </p>
+        </div>
+        <div class="media portrait">
+          <img src="../photos/alex-perez-circle.png" alt="Alexander Perez, glasses and beanie" width="857" height="857" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="rail bio-grid">
+        <p class="section-label">Info</p>
+        <p class="prose">
+          I'm Alex Perez, based in Denver. I've launched startups, delivered a $2.5M government contract, and broken DeFi systems for a living. The through-line is translation: what the tools actually do, in language that sticks for HR, Ops, and L&D teams - never instead of them.
+        </p>
+      </div>
+    </section>
+
+    <footer class="contact" id="contact">
+      <div class="rail">
+        <h2 class="contact-h2">Connect, collaborate, or just say hello</h2>
+        <a class="contact-link" href="mailto:hello@iknowai.co">hello@iknowai.co</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

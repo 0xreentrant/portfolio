@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>D - Contact-forward · Alexander Perez</title>
+  <link rel="stylesheet" href="./spatino-tokens.css" />
+  <style>
+    .band {
+      min-height: calc(100svh - 81px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px var(--gutter) 40px;
+      background: var(--surface);
+    }
+    @media (min-width: 768px) {
+      .band { padding: 80px var(--gutter) 56px; }
+    }
+    .top {
+      display: grid;
+      gap: 40px;
+    }
+    @media (min-width: 900px) {
+      .top {
+        grid-template-columns: minmax(0, 1.1fr) minmax(240px, 0.7fr);
+        align-items: end;
+        gap: 4px;
+      }
+    }
+    .mail {
+      margin: 0;
+      font-size: var(--font-size-2xl);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -2px;
+      color: var(--muted-soft);
+      word-break: break-word;
+    }
+    .mail:hover { color: var(--foreground); }
+    .side {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .side .media {
+      width: 100%;
+      max-width: 280px;
+      aspect-ratio: 1;
+      margin-left: auto;
+    }
+    @media (max-width: 899px) {
+      .side .media { margin-left: 0; max-width: 200px; }
+    }
+    .bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule-strong);
+      font-size: var(--font-size-sm);
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header" style="background: var(--surface);">
+    <div class="rail header-inner">
+      <div>
+        <p class="brand">Alexander Perez</p>
+        <p class="meta">Reachable first</p>
+      </div>
+      <nav class="nav" aria-label="Main">
+        <a href="#" aria-current="page">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="band" id="contact">
+      <div class="rail top">
+        <div>
+          <h1 class="h1" style="margin-bottom: 28px; max-width: 14ch;">
+            Hello from Denver.
+          </h1>
+          <a class="mail" id="about" href="mailto:hello@iknowai.co">hello@iknowai.co</a>
+          <p class="lede" style="margin-top: 32px; max-width: 28rem; color: var(--muted-deep);">
+            Engineer who teaches. Not a product catalog - yet. If you want the long version of the arc (eng → security → AI adoption coaching), ask. I read every DM.
+          </p>
+        </div>
+        <div class="side">
+          <div class="media">
+            <img src="../photos/alex-perez-circle.png" alt="Alexander Perez" width="280" height="280" />
+          </div>
+        </div>
+      </div>
+      <div class="rail bottom">
+        <span>EN / ES · Denver, CO</span>
+        <span>Person before product</span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
