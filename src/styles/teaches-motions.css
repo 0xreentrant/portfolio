@@ -1,0 +1,135 @@
+/* Play-once letter motions for "teaches" on the H1 hybrid shell.
+   Default state is always readable. Modes are applied via data-mode on .anim-word. */
+
+.anim-word {
+  display: inline-block;
+  white-space: nowrap;
+  perspective: 480px;
+  transform-style: preserve-3d;
+  letter-spacing: -0.04em;
+  color: var(--foreground);
+  transform-origin: center;
+}
+
+.anim-word .letter {
+  display: inline-block;
+  opacity: 1;
+  filter: blur(0);
+  clip-path: inset(0 0 0 0);
+  transform: translateY(0) rotateX(0deg);
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity, filter, clip-path;
+}
+
+/* L03 - Stagger fade-up */
+.anim-word[data-mode="fade-up"] .letter {
+  animation: teaches-fade-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+@keyframes teaches-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* L04 - Blur-in */
+.anim-word[data-mode="blur-in"] .letter {
+  animation: teaches-blur-in 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+@keyframes teaches-blur-in {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* L05 - Clip reveal */
+.anim-word[data-mode="clip"] .letter {
+  animation: teaches-clip 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+@keyframes teaches-clip {
+  from { clip-path: inset(100% 0 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* L06 - Tracking pulse then settle (word-level) */
+.anim-word[data-mode="tracking"] {
+  animation: teaches-tracking 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes teaches-tracking {
+  0% {
+    letter-spacing: -0.06em;
+    transform: scale(1);
+    color: var(--foreground);
+  }
+  42% {
+    letter-spacing: 0.14em;
+    transform: scale(1.02);
+    color: var(--accent-violet);
+  }
+  100% {
+    letter-spacing: -0.04em;
+    transform: scale(1);
+    color: var(--foreground);
+  }
+}
+
+/* L07 - Wave a couple times then settle */
+.anim-word[data-mode="wave"] .letter {
+  animation: teaches-wave 4.4s ease-in-out both;
+  animation-delay: calc(var(--i, 0) * -0.28s);
+}
+
+@keyframes teaches-wave {
+  0% { transform: translateY(0); }
+  12.5% { transform: translateY(-0.08em); }
+  25% { transform: translateY(0); }
+  37.5% { transform: translateY(0.08em); }
+  50% { transform: translateY(0); }
+  62.5% { transform: translateY(-0.08em); }
+  75% { transform: translateY(0); }
+  87.5% { transform: translateY(0.08em); }
+  100% { transform: translateY(0); }
+}
+
+/* L09 - Flip reveal */
+.anim-word[data-mode="flip"] .letter {
+  animation: teaches-flip 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+
+@keyframes teaches-flip {
+  from { transform: rotateX(90deg); }
+  to { transform: rotateX(0deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-word,
+  .anim-word .letter {
+    animation: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    clip-path: inset(0 0 0 0) !important;
+    transform: none !important;
+    letter-spacing: -0.04em !important;
+    color: var(--foreground) !important;
+  }
+}

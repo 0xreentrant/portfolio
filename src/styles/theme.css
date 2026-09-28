@@ -1,6 +1,4 @@
-/* Abrantes-inspired tokens for Alexander Perez options.
-   Dark canvas #141414, dual accent (violet + yellow), large display tracking.
-   Type: Switzer via Fontshare (reference used a different grotesk we are not copying). */
+/* Hybrid dark shell: Abrantes canvas + Spatino section rhythm. */
 @import url("https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap");
 
 :root {
@@ -12,6 +10,7 @@
   --accent-yellow: #ffef93;
   --surface: #1c1c1c;
   --surface-2: #2d2d2d;
+  --rule: rgba(255, 255, 255, 0.06);
   --font: "Switzer", ui-sans-serif, system-ui, sans-serif;
   --text-5xl: clamp(56px, calc(3.536vw + 42.74px), 88px);
   --text-4xl: clamp(40px, calc(2.21vw + 31.71px), 60px);
@@ -23,29 +22,56 @@
   --container-max: 1280px;
   --container-pad: clamp(20px, 4vw, 52px);
   --nav-height: 60px;
-  --space-section: clamp(64px, 8vw, 105px);
-  --ease: cubic-bezier(.16, 1, .3, 1);
+  --space-section: clamp(64px, 8vw, 96px);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --radius-pill: 9999px;
 }
 
-* { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-html, body {
+html,
+body,
+#root {
   margin: 0;
   min-height: 100%;
+}
+
+body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font);
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
 
 .skip {
   position: absolute;
   left: -9999px;
 }
+
 .skip:focus {
   left: 16px;
   top: 16px;
@@ -82,7 +108,11 @@ img { display: block; max-width: 100%; }
   font-size: var(--text-sm);
   color: var(--muted-soft);
 }
-.nav-links a:hover { color: var(--foreground); }
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  color: var(--foreground);
+}
 
 .pill {
   display: inline-flex;
@@ -96,8 +126,15 @@ img { display: block; max-width: 100%; }
   font-weight: 500;
   transition: transform 0.2s var(--ease);
 }
-.pill:hover { transform: scale(1.02); }
-.pill svg { width: 14px; height: 14px; }
+
+.pill:hover {
+  transform: scale(1.02);
+}
+
+.pill svg {
+  width: 14px;
+  height: 14px;
+}
 
 .kicker {
   margin: 0 0 20px;
@@ -107,22 +144,27 @@ img { display: block; max-width: 100%; }
   text-transform: uppercase;
   color: var(--muted);
 }
-.kicker .v { color: var(--accent-violet); }
-.kicker .y { color: var(--accent-yellow); }
+
+.kicker .v {
+  color: var(--accent-violet);
+}
+
+.kicker .y {
+  color: var(--accent-yellow);
+}
 
 .h1 {
   margin: 0;
-  max-width: 16ch;
+  max-width: 14ch;
   font-size: var(--text-5xl);
   font-weight: 500;
   line-height: 0.9;
-  letter-spacing: -0.05em;
-  text-wrap: balance;
+  letter-spacing: -0.04em;
 }
 
-.h1 .glow {
-  color: var(--foreground);
-  text-shadow: 0 0 24px rgba(194, 168, 255, 0.35);
+.h1 .mute {
+  color: var(--muted);
+  font-weight: 400;
 }
 
 .lede {
@@ -131,18 +173,6 @@ img { display: block; max-width: 100%; }
   font-size: var(--text-lg);
   line-height: 1.5;
   color: var(--muted);
-  text-wrap: pretty;
-}
-
-.meta-row {
-  margin: 40px 0 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 28px;
-  font-size: var(--text-sm);
-  color: var(--muted-soft);
 }
 
 .hero {
@@ -153,15 +183,61 @@ img { display: block; max-width: 100%; }
   padding-block: 48px var(--space-section);
 }
 
+.hero-grid {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+  }
+}
+
+.portrait {
+  aspect-ratio: 1;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.15) contrast(1.05);
+}
+
 .section {
   padding-block: var(--space-section);
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid var(--rule);
+}
+
+.bio-grid {
+  display: grid;
+  gap: 16px 4px;
+}
+
+@media (min-width: 768px) {
+  .bio-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bio-grid .section-label {
+    position: sticky;
+    top: 16px;
+    align-self: start;
+  }
 }
 
 .section-label {
-  margin: 0 0 16px;
-  font-size: var(--text-sm);
-  color: var(--muted);
+  margin: 0;
+  font-size: var(--text-xl);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--foreground);
+  line-height: 1.35;
 }
 
 .prose {
@@ -172,17 +248,80 @@ img { display: block; max-width: 100%; }
   color: var(--muted-soft);
 }
 
+.section-head {
+  display: grid;
+  gap: 16px 4px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+  .section-head {
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 32px;
+  }
+}
+
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.logos a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 4px;
+  border-radius: 10px;
+  opacity: 0.55;
+  filter: grayscale(1);
+  transform: translateZ(0) scale(1);
+  transition:
+    opacity 0.45s var(--ease),
+    filter 0.5s var(--ease),
+    transform 0.45s var(--ease),
+    box-shadow 0.45s var(--ease);
+}
+
+.logos img {
+  max-height: 44px;
+  max-width: 44px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.logos a:hover,
+.logos a:focus-visible {
+  opacity: 1;
+  filter: grayscale(0);
+  transform: translateY(-4px) scale(1.12);
+  box-shadow: 0 12px 32px -14px rgb(0 0 0 / 0.65);
+  outline: none;
+}
+
 .contact-band {
   padding-block: var(--space-section);
   background: var(--surface);
 }
 
+.contact-band .rail {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .contact-h2 {
-  margin: 0 0 24px;
-  max-width: 14ch;
+  margin: 0;
+  max-width: 18ch;
   font-size: var(--text-4xl);
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.05;
   letter-spacing: -0.04em;
 }
 
@@ -192,12 +331,23 @@ img { display: block; max-width: 100%; }
   color: var(--muted);
   transition: color 0.2s var(--ease);
 }
-.mail:hover { color: var(--foreground); }
+
+.mail:hover {
+  color: var(--foreground);
+}
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
-  .pill:hover { transform: none; }
+
+  .pill:hover,
+  .logos a:hover,
+  .logos a:focus-visible {
+    transform: none !important;
+    box-shadow: none;
+  }
 }
